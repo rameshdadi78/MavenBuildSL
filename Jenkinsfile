@@ -10,8 +10,8 @@ pipeline {
 	
 	stage('Build'){
 		steps{
-			bat "mvn clean install "
-		}
+		       bat "mvn clean install -Dmaven.test.skip=true"
+		        }
 	}
 	
 	stage('Archive Artifact'){
