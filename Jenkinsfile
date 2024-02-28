@@ -10,7 +10,7 @@ pipeline {
 	
 	stage('Build'){
 		steps{
-		       bat "mvn clean install -Dmaven.test.skip=false"
+		       bat "mvn clean install package"
 		        }
 	}
 	
@@ -31,14 +31,5 @@ pipeline {
 		
 	}
 	
-	stage('Notification'){
-		steps{
-		emailext(
-			subject: "Job Completed",
-			body: "Jenkins pipeline job for maven build job completed",
-			to: "dasmanthkare@gmail.com"
-		)
-		}
-	}
 	}
 }
