@@ -10,7 +10,7 @@ pipeline {
 	
 	stage('Build'){
 		steps{
-			bat "mvn clean install -Dmaven.test.skip=true"
+			sh "mvn clean package -Dmaven.test.skip=true"
 		}
 	}
 	
@@ -22,9 +22,9 @@ pipeline {
 	
 	stage('deployment'){
 		steps{
-		//deploy adapters: [tomcat9(credentialsId: 'TomcatCreds' path: '', url: 'http://52.90.187.236:8080/')], contextPath: 'counterwebapp', war: 'target/*.war'
-		deploy adapters: [tomcat9(url: 'http://3.92.185.199:8080/', 
-                              credentialsId: 'TomcatCreds')], 
+		//deploy adapters: [tomcat9(credentialsId: 'tomcatCreds' path: '', url: 'http://52.90.187.236:8080/')], contextPath: 'counterwebapp', war: 'target/*.war'
+		deploy adapters: [tomcat9(url: 'http://3.145.209.139:8080/', 
+                              credentialsId: 'tomcatCreds')], 
                      war: 'target/*.war',
                      contextPath: 'app'
 		}
@@ -36,7 +36,7 @@ pipeline {
 		emailext(
 			subject: "Job Completed",
 			body: "Jenkins pipeline job for maven build job completed",
-			to: "sudheer.baraker@gmail.com"
+			to: "dasmanthkare@gmail.com"
 		)
 		}
 	}
