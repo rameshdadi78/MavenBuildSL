@@ -10,8 +10,8 @@ pipeline {
 	
 	stage('Build'){
 		steps{
-		       bat "mvn clean install package"
-		        }
+			sh "mvn clean install -Dmaven.test.skip=true"
+		}
 	}
 	
 	stage('Archive Artifact'){
@@ -22,8 +22,8 @@ pipeline {
 	
 	stage('deployment'){
 		steps{
-		//deploy adapters: [tomcat9(credentialsId: 'TomcatCreds' path: '', url: 'http://3.142.148.103:8080/')], contextPath: 'counterwebapp', war: 'target/*.war'
-		deploy adapters: [tomcat9(url: 'http://3.142.148.103:8080/', 
+		//deploy adapters: [tomcat9(credentialsId: 'TomcatCreds' path: '', url: 'http://3.145.209.139:8080/')], contextPath: 'counterwebapp', war: 'target/*.war'
+		deploy adapters: [tomcat9(url: 'http://3.145.209.139:8080/', 
                               credentialsId: 'TomcatCreds')], 
                      war: 'target/*.war',
                      contextPath: 'app'
@@ -31,5 +31,14 @@ pipeline {
 		
 	}
 	
+	stage('Notification'){
+		steps{
+		emailext(
+			subject: "Job Completed",
+			body: "Jenkins pipeline job for maven build job completed",
+			to: "dasmanthkare@gmail.com"
+		)
+		}
+	}
 	}
 }
