@@ -29,7 +29,7 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         url: 'http://192.168.0.112:9050/', 
-                        credentialsId: 'TomcatCreds'
+                        credentialsId: 'tomcatCreds'
                     )
                 ], 
                 war: 'target/*.war', 
