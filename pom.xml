@@ -6,6 +6,10 @@
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <url>http://maven.apache.org</url>
+<properties>
+    <cargo.remote.username>admin</cargo.remote.username>
+    <cargo.remote.password>admin</cargo.remote.password>
+</properties>
   <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
