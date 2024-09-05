@@ -28,8 +28,8 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version> <!-- or another version compatible with your Maven setup -->
             <configuration>
-                <source>1.8</source> <!-- or 11, 17, etc. depending on your JDK version -->
-                <target>1.8</target>
+                <source>17</source> <!-- or 11, 17, etc. depending on your JDK version -->
+                <target>17</target>
             </configuration>
         </plugin>
             <plugin>
